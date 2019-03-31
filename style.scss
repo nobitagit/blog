@@ -111,11 +111,11 @@ img {
 .entry {
   color: $nobita_grey__semi;
 
-  // links inside posts
-  a {
+ }
+ .entry a {
     border-bottom: 1px dashed;
   }
-}
+
 
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
