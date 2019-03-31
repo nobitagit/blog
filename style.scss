@@ -17,6 +17,15 @@ html {
   font-size: 100%;
 }
 
+html:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, $nobita_main 0%, #51ebcc 100%);
+  height: 4px;
+}
+
 body {
 	background: $nobita_grey;
   font: 18px/1.4 $helvetica;
