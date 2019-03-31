@@ -33,8 +33,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   color: $darkerGray;
-  font-weight: bold;
-
   line-height: 1.7;
   margin: 1em 0 15px;
   padding: 0;
@@ -112,6 +110,11 @@ img {
 
 .entry {
   color: $nobita_grey__semi;
+
+  // links inside posts
+  a {
+    border-bottom: 1px dashed;
+  }
 }
 
 // Fixes images in popup boxes from Google Translate
