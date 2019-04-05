@@ -16,42 +16,8 @@ gem install github-pages
 
 ```sh
 -> gem environment
-RubyGems Environment:
-  - RUBYGEMS VERSION: 3.0.3
-  - RUBY VERSION: 2.6.2 (2019-03-13 patchlevel 47) [x86_64-darwin18]
-  - INSTALLATION DIRECTORY: /usr/local/lib/ruby/gems/2.6.0
-  - USER INSTALLATION DIRECTORY: /Users/aurelioogliari/.gem/ruby/2.6.0
-  - RUBY EXECUTABLE: /usr/local/opt/ruby/bin/ruby
-  - GIT EXECUTABLE: /usr/bin/git
-  - EXECUTABLE DIRECTORY: /usr/local/lib/ruby/gems/2.6.0/bin
-  - SPEC CACHE DIRECTORY: /Users/aurelioogliari/.gem/specs
-  - SYSTEM CONFIGURATION DIRECTORY: /usr/local/Cellar/ruby/2.6.2/etc
-  - RUBYGEMS PLATFORMS:
-    - ruby
-    - x86_64-darwin-18
-  - GEM PATHS:
-     - /usr/local/lib/ruby/gems/2.6.0
-     - /Users/aurelioogliari/.gem/ruby/2.6.0
-     - /usr/local/Cellar/ruby/2.6.2/lib/ruby/gems/2.6.0
-  - GEM CONFIGURATION:
-     - :update_sources => true
-     - :verbose => true
-     - :backtrace => false
-     - :bulk_threshold => 1000
-  - REMOTE SOURCES:
-     - https://rubygems.org/
-  - SHELL PATH:
-     - /usr/local/Cellar/rbenv/1.1.2/libexec
-     - /usr/local/opt/openssl/bin
-     - /usr/local/opt/python/libexec/bin
-     - /usr/local/opt/ruby/bin
-     - /usr/local/opt/ruby/bin
-     - /usr/local/bin
-     - /usr/bin
-     - /bin
-     - /usr/sbin
-     - /sbin
 ```
+
  Look for Executable directory (for example `EXECUTABLE DIRECTORY: /usr/local/lib/ruby/gems/2.6.0/bin`) and then run Jekyll.
 
  ```sh
