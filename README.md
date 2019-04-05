@@ -9,19 +9,19 @@ The blog is built using Jekyll, so you'll need Ruby.
 1. Install the dependencies.
 
 ```sh
-gem install github-pages
+$ gem install github-pages
 ```
 
 2. Build. You can either export Jekyll so it's available on your path or just run the executable from its location. If you don't know where it is just run
 
 ```sh
--> gem environment
+$ gem environment
 ```
 
  Look for Executable directory (for example `EXECUTABLE DIRECTORY: /usr/local/lib/ruby/gems/2.6.0/bin`) and then run Jekyll.
 
  ```sh
-/usr/local/lib/ruby/gems/2.6.0/bin/jekyll serve
+$ /usr/local/lib/ruby/gems/2.6.0/bin/jekyll serve
  ```
 
  3. Open http://127.0.0.1:4000 in your browser.
