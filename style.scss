@@ -117,13 +117,23 @@ img {
   max-width: 100%;
 }
 
+.post-title {
+  line-height: 1.3;
+}
+
 .entry {
   color: $nobita_grey__semi;
 
  }
- .entry a {
-    border-bottom: 1px dashed;
-  }
+.entry a {
+  border-bottom: 1px dashed;
+}
+.entry img {
+  margin: 20px 0;
+}
+.entry p {
+  line-height: 1.6;
+}
 
 
 // Fixes images in popup boxes from Google Translate
