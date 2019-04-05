@@ -18,15 +18,18 @@ $ gem install github-pages
 $ gem environment
 ```
 
- Look for Executable directory (for example `EXECUTABLE DIRECTORY: /usr/local/lib/ruby/gems/2.6.0/bin`) and then run Jekyll.
+Look for Executable directory (for example `EXECUTABLE DIRECTORY: /usr/local/lib/ruby/gems/2.6.0/bin`) and then run Jekyll.
 
- ```sh
+```sh
+$ /usr/local/lib/ruby/gems/2.6.0/bin/jekyll build
 $ /usr/local/lib/ruby/gems/2.6.0/bin/jekyll serve
- ```
+```
 
- 3. Open http://127.0.0.1:4000 in your browser.
+You can add `--incremental` to the last command to enable incremental builds.
 
- Some more info can be found on the original readme of this [project](./OLD_README.md).
+3.  Open http://127.0.0.1:4000 in your browser.
+
+Some more info can be found on the original readme of this [project](./ORIGINAL_README.md).
 
 ### Credits
 
