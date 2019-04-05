@@ -1,11 +1,11 @@
 ---
 layout: post
-title: A simple trick to make yarn and npm installs a bit less painful
+title: A simple trick to make npm and yarn installs on Mac a bit less painful and save you some time
 ---
 
 One of the funniest and most overused memes of the JavaScript side of the Internet world is surely the one below.
 
-![_config.yml]({{ site.baseurl }}/images/2019-4-6-node_modules)
+![_config.yml]({{ site.baseurl }}/images/2019-4-6-node_modules.png)
 
 If you've ever ventured inside a node_module directory of a medium sized project the (unknown?) author of this successful image clearly has a point.
 
