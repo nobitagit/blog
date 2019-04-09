@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A simple trick to make npm and yarn installs on Mac a bit less painful and save you some time
+title: A simple trick to make npm and yarn installs on Mac a bit less painful
 ---
 
 One of the funniest and most overused memes of the JavaScript side of the Internet world is surely the one below.
@@ -48,9 +48,12 @@ For example, you can add a postinstall block to your package.json scripts so tha
 }
 ```
 
-If instead you'd rather have it available on just about any node project without touching the package.json you can add this to your `~/.bash_profile` or `./zsh_profile`.
+This is nice and easy but you will need to do the same for all your projects, plus it will run for everyone else using that package.json, even if not on a Mac.
+To have a similar functionality available everywhere on your file system and without touching the package.json you can add this to your `~/.bash_profile` or `./zsh_profile`.
 
 ```sh
+# open your profile with `vim ~/.bash_profile`
+# and paste the function below
 function npmi {
     mkdir node_modules 2>/dev/null
     touch ./node_modules/.metadata_never_index
@@ -62,6 +65,7 @@ function npmi {
 }
 ```
 
+Running `npmi` on the root of any node project will add the `.metadata_never_index` file automatically, just before installing the dependencies.
 Finally it may be useful to just do the same for all existing projects on our file system.
 
 ```sh
@@ -70,4 +74,5 @@ find . -type d -name "node_modules" -exec touch "{}/.metadata_never_index" \;
 
 This was suggested on Yarn's Github in a comment to [this issue](https://github.com/yarnpkg/yarn/issues/6453#issuecomment-476048618) and it seems it appeared first as far back as 2016 in a [StackExchange answer](https://apple.stackexchange.com/a/258791/44487).
 
-Hopefully this simple trick will save me a bit of time (and battery power!) in the future.
+Hopefully this simple trick will save us a bit of time (and battery power!) in the future.
+
