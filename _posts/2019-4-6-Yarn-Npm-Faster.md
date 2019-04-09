@@ -24,7 +24,7 @@ Now, I rarely use Spotlight other than to quickly open an app, and when I do thi
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 But I digress.
-What's imprtant is that the fact that I so rarely use it doesn't prevent Spotlight to crawl the content of my HD.
+What's important is that the fact I rarely use it doesn't prevent Spotlight to crawl the content of my HD.
 As any other entry in the file system the content of node_modules gets indexed by Spotlight by default.
 I never really thought about this util I read the following tweet.
 
@@ -49,7 +49,7 @@ For example, you can add a postinstall block to your package.json scripts so tha
 ```
 
 This is nice and easy but you will need to do the same for all your projects, plus it will run for everyone else using that package.json, even if not on a Mac.
-To have a similar functionality available everywhere on your file system and without touching the package.json you can add this to your `~/.bash_profile` or `./zsh_profile`.
+To have a similar functionality available everywhere on your Mac and without touching the package.json you can add this to your `~/.bash_profile` or `./zsh_profile`.
 
 ```sh
 # open your profile with `vim ~/.bash_profile`
