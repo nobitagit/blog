@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Upping your Lodash game: from chaining to piping
+title: "Upping your Lodash game: from chaining to piping"
 ---
 
 [Lodash](https://lodash.com) is pretty much the de-facto standard when we're looking for a utility library for data manipulation in JavaScript. So much that it is the [most depended on package](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491) on npm.
 
-Lodash allows developers to write expressive code by covering the most common needs when handling data. 
+Lodash allows developers to write expressive code by covering the most common needs when handling data.
 For instance it makes writing and reading operations like these seem very natural and straightforward:
 
 ```
@@ -15,11 +15,11 @@ _.intersection(['a', 'b', 'c'], ['a', 'c', 'e']); // ['a', 'c']
 It's easy to fall in love with the expressiveness and convenience of such a tool. As soon as you get out of the most simple use cases though you will arguably miss a great feature of native array methods such as `Array.map`, `Array.slice` and the likes. This "missing" feature is chaining.
 
 We'll see in example in a minute. A quick note before going any further.
- 
+
 ## Disclaimer: which Lodash?
-As we will see Lodash comes in different distributions. 
+As we will see Lodash comes in different distributions.
 In this post we will start by making use of [Lodash-es](https://github.com/lodash/lodash/tree/es) which is Lodash exported as ES modules. This allows us to write stuff like:
- 
+
 ```js
 import { take, orderBy } from 'lodash-es';
 ```
@@ -32,9 +32,9 @@ import orderBy from 'lodash/orderby';
 ```
 
 And have our bundler (Webpack in this case) only include what's needed by `take` rather than blindly bundling the whole Lodash.
- 
+
 The goal in both cases here is to stay away from importing the whole library, which will happen when writing stuff like:
- 
+
 ```js
 // try to avoid doing this
 import _ from 'lodash';
@@ -53,8 +53,8 @@ I will reference the commits for each stage in the comments at the top of each s
 With the introduction out of the way it's time to see some code!
 
 ## Introduction: our challenge of the day
-In order to demostrate the power of Lodash we will set ourselves a realistic goal. 
-Given a list of players we want to find the names of the top three players by number of goals. 
+In order to demostrate the power of Lodash we will set ourselves a realistic goal.
+Given a list of players we want to find the names of the top three players by number of goals.
 If two players have the same number of goals, then the one who managed to get to that tally with a lower number of shots will be the winner.
 
 Here's a list of Premier League strikers, along with their stats.
@@ -91,7 +91,7 @@ const top3 = take(sorted, 3);
 const result = map(top3, 'player');
 console.log(result); // ["Sergio Agüero", "Mohamed Salah", "Sadio Manè"]
 ```
-Nice, that's the result we were after. Problem solved. 
+Nice, that's the result we were after. Problem solved.
 
 Let's quickly analyse the bundle now.
 ```sh
@@ -180,7 +180,7 @@ TypeError: (intermediate value)(...).orderBy is not a function
 ![_config.yml]({{ site.baseurl }}/images/2019-7-2-lodash-1.png)
 
 The reason here is that Webpack is unaware that Lodash in this case needs other methods than the one we're explicitly importing (ie `chain`). The bundler then happily tree-shakes all the methods that appear to be unused, crucially leaving us with no _.map, no _.orderBy, no _.take on the prod bundle. This will end up throwing a runtime error on production. Not exactly great.
-To fix this we can import the whole lodash and destructure only what we need later on. 
+To fix this we can import the whole lodash and destructure only what we need later on.
 We'll do just that and see the outcome.
 
 ## Step 3: Fix the broken chain by importing all the things
@@ -221,7 +221,7 @@ The question now is, is there a way we can we have the expressiveness of chainin
 
 The first thing we'll do is shift from one pattern, [chaining](https://medium.com/backticks-tildes/understanding-method-chaining-in-javascript-647a9004bd4f), to a similar but fundamentally different one, i.e. [piping](https://vanslaars.io/post/create-pipe-function/).
 
-Chances are you have already seen piping in action. In any case, the idea behind `pipe` is very simple. 
+Chances are you have already seen piping in action. In any case, the idea behind `pipe` is very simple.
 Pipe will accept 2 arguments: a sequence of functions and a value as starting input.
 Every function inside `pipe` will then receive as input the output of the previous one.
 
@@ -299,7 +299,7 @@ const result = flow(
 )(players);
 ```
 
-There's quite a bit of explanation to do here. 
+There's quite a bit of explanation to do here.
 First thing, we pass the function we want to turn into one that supports partially applied arguments.
 
 ```js
@@ -307,7 +307,7 @@ partial(orderBy, ...),
 ```
 
 Then we list all the arguments we want to pass to this function, in order.
-Crucially the first argument we need to pass to it is our `_players` argument. We can now instruct Lodash that we will pass this value at a later stage by using a placeholder. Lodash provides this functionality so that we can mark the slots where the arguments will be passed once they become available. 
+Crucially the first argument we need to pass to it is our `_players` argument. We can now instruct Lodash that we will pass this value at a later stage by using a placeholder. Lodash provides this functionality so that we can mark the slots where the arguments will be passed once they become available.
 
 ```js
 const __ = partial.placeholder;
@@ -393,7 +393,7 @@ We then check the size of our bundle and....
 ```
 
 It's clearly gone back to include the whole library code!
-The reason is the way we import Lodash methods. Unfortunately since we are not using `Lodash-es` anymore Webpack can't tree shake named imports.  
+The reason is the way we import Lodash methods. Unfortunately since we are not using `Lodash-es` anymore Webpack can't tree shake named imports.
 
 ## Step 7: Switching imports
 
@@ -423,7 +423,7 @@ As you can see we have trimmed down our bundle again. Although it's not as small
 
 ## Moving to lodash/fp. Is it worth it?
 
-So, should you move to using pipes rather than chaining and convert your imports to use `lodash/fp`? As everything in programming (or in life!) the answer is only one: it depends. 
+So, should you move to using pipes rather than chaining and convert your imports to use `lodash/fp`? As everything in programming (or in life!) the answer is only one: it depends.
 Let's compare our original, chained version:
 
 ```js
@@ -472,7 +472,7 @@ const top3totalGoals = flow(
 )(players); // 56
 ```
 
-This way we can find a meaningful name for and reuse the `top3` function elsewhere. In this case `top3` contains only lodash methods, but of course we're not limited to them. As long as the new function receives data in and returns data out we'll be good to go. 
+This way we can find a meaningful name for and reuse the `top3` function elsewhere. In this case `top3` contains only lodash methods, but of course we're not limited to them. As long as the new function receives data in and returns data out we'll be good to go.
 
 My personal opinion is that moving to pipes + lodash/fp is worth most of the times and is defintely worth trying if you're a heavy Lodash user.
 
