@@ -349,7 +349,7 @@ But the implementation itself does not seem too much of an improvement to what w
 We can certainly do better. Ideally we would want Lodash to take care of partial application without us having to be so explicit in **how** to do that, nor do it for every method.
 To do so we need a different version of Lodash, Lodash/fp.
 
-STEP 6: Meet Lodash/fp
+## STEP 6: Meet Lodash/fp
 
 Lodash provides a version that supports partial application out of the box for every method. Along with other features such as rearranging the arguments so that the data is passed as the last argument of each method rather than being the first, Lodash/fp will allow us to get where we want.
 
@@ -421,7 +421,7 @@ const result = flow(
 
 As you can see we have trimmed down our bundle again. Although it's not as small as it was before at 32K, we're really importing only what we need.
 
-## Moving to lodash/fp. Is it worth it?
+## Conclusion: Moving to lodash/fp. Is it worth it?
 
 So, should you move to using pipes rather than chaining and convert your imports to use `lodash/fp`? As everything in programming (or in life!) the answer is only one: it depends.
 Let's compare our original, chained version:
