@@ -208,5 +208,272 @@ Let's check the bundles once more.
 We now are back to having 2 files, our "main" (app.js) and our chunk. Unfortunately this last file is way bigger than before.
 
 
-This comes down to the fact that we told Webpack to include the full library and our bundler did just that. As it turns out, chaining and tree-shaking in Lodash-es [can't be achieved together](https://github.com/lodash/lodash/issues/3298), unless you're willing to do some gymnastics https://github.com/lodash/lodash/issues/3298#issuecomment-341685354
-Is there a way we can we have the expressiveness of chaining (or a similar pattern) without incurring in a penalty cost or having to maintain a clunky custom version of it? This dilemma can be solved, and we will see a possible solution in two acts.
+This comes down to the fact that we told Webpack to include the full library and our bundler did just that. As it turns out, chaining and tree-shaking in Lodash-es [can't be achieved together](https://github.com/lodash/lodash/issues/3298), unless you're willing to do [some not-so-pretty gymnastics](https://github.com/lodash/lodash/issues/3298#issuecomment-341685354).
+
+The question now is, is there a way we can we have the expressiveness of chaining (or a similar pattern) without incurring in a penalty cost or having to maintain a clunky custom version of it? That's exactly what we'll try to achieve in our next steps.
+
+## Step 4: From chaining to piping
+
+The first thing we'll do is shift from one pattern, [chaining](https://medium.com/backticks-tildes/understanding-method-chaining-in-javascript-647a9004bd4f), to a similar but fundamentally different one, i.e. [piping](https://vanslaars.io/post/create-pipe-function/).
+
+Chances are you have already seen piping in action. In any case, the idea behind `pipe` is very simple. 
+Pipe will accept 2 arguments: a sequence of functions and a value as starting input.
+Every function inside `pipe` will then receive as input the output of the previous one.
+
+This is exactly what we need, and in essence, not *that* distant to what we have when chaining.
+As it turns out, Lodash provides a `flow` function that is the equivalent of pipe. Let's see it at work in practice.
+
+```js
+// git checkout 146c84a17f2c44c81317794740e8d8c46aae0938
+import { flow, orderBy, take, map, partial } from "lodash-es";
+
+const result = flow(
+  _players => orderBy(_players, ["goals", "shots"], ["desc", "asc"]),
+  _players => take(_players, 3),
+  _players => map(_players, "player")
+)(players);
+```
+
+This is great. We have now removed the need of intermediate constants and we turned our data transformation into a pipeline. The `flow` function takes care of kicking off everything with the value of `players` and then passing the result of each step (each line) to the next transformation.
+
+A quick check at our bundle and we can see that we've trimmed down the size of our bundle again.
+
+```sh
+-> du -sh build/js/*.js
+ 32K    build/js/1.chunk.js
+4.0K    build/js/app.js
+```
+
+I find the code readable as it is but there's still quite a bit of redundancy here. Those `_players` argument repeated twice on each line create noise and it would be really nice if we could remove them.
+
+As things stand we have have 2 solutions. We can be cheeky and just rename that variable to something very short, since it's quite clear by now what that value represents:
+
+```js
+const result = flow(
+  v => orderBy(v, ["goals", "shots"], ["desc", "asc"]),
+  v => take(v, 3),
+  v => map(v, "player")
+)(players);
+```
+
+But wouldn't it be even better if we could remove that arrow function altogether?
+In essence what I am aiming for is this.
+
+```js
+const result = flow(
+  orderBy(["goals", "shots"], ["desc", "asc"]),
+  take(3),
+  map("player")
+)(players);
+```
+
+Which is the closest we could get to the original chained version:
+
+```js
+const result = chain(players)
+  .orderBy(["goals", "shots"], ["desc", "asc"])
+  .take(3)
+  .map("player")
+  .value();
+```
+
+Unfortunately that doesn't quite work.
+To do make it happen we need to somehow turn the Lodash methods we are using into functions that support partial application. We can attempt to do that, and actually Lodash helps us again by providing a convenience method to turn every function into one that executes only when the last argument is passed. `_.partial` is what we are looking for.
+
+## Step 5: Partially there
+
+```js
+import { flow, orderBy, take, map, partial } from "lodash-es";
+
+const __ = partial.placeholder;
+
+const result = flow(
+  partial(orderBy, __, ["goals", "shots"], ["desc", "asc"]),
+  partial(take, __, 3),
+  partial(map, __, "player")
+)(players);
+```
+
+There's quite a bit of explanation to do here. 
+First thing, we pass the function we want to turn into one that supports partially applied arguments.
+
+```js
+partial(orderBy, ...),
+```
+
+Then we list all the arguments we want to pass to this function, in order.
+Crucially the first argument we need to pass to it is our `_players` argument. We can now instruct Lodash that we will pass this value at a later stage by using a placeholder. Lodash provides this functionality so that we can mark the slots where the arguments will be passed once they become available. 
+
+```js
+const __ = partial.placeholder;
+// ...
+partial(orderBy, __, ... )
+```
+
+We then can just list all the remaining arguments, as we now them already:
+
+```js
+ partial(orderBy, __, ["goals", "shots"], ["desc", "asc"])
+```
+
+Here's once again the full version of it:
+
+```js
+const __ = partial.placeholder;
+// Sort players by goals scored and shots taken.
+// If 2 players have the same number of goals, the one player
+// with less shots on targets is ranked higher.
+const result = flow(
+  partial(orderBy, __, ["goals", "shots"], ["desc", "asc"]),
+  partial(take, __, 3),
+  partial(map, __, "player")
+)(players);
+```
+
+**NOTE**: this is perhaps an oversimplification of `_.partial` and really geared towards explaining our particular problem at hand. Notably there's an improved version we could achieve in this case by using `_.partialRight`, but I decided to skip it for this post. There's an example in this answer that I posted on [StackOverflow](https://stackoverflow.com/a/42368281/1446845) if you are interested.
+
+Our bundle still looks ok
+
+```js
+-> du -sh build/js/*.js
+ 32K    build/js/1.chunk.js
+4.0K    build/js/app.js
+```
+
+But the implementation itself does not seem too much of an improvement to what we had when using our arrow functions.
+We can certainly do better. Ideally we would want Lodash to take care of partial application without us having to be so explicit in **how** to do that, nor do it for every method.
+To do so we need a different version of Lodash, Lodash/fp.
+
+STEP 6: Meet Lodash/fp
+
+Lodash provides a version that supports partial application out of the box for every method. Along with other features such as rearranging the arguments so that the data is passed as the last argument of each method rather than being the first, Lodash/fp will allow us to get where we want.
+
+
+Let's first install the "regular" version of Lodash exported as Node.js modules. This actually contains the functional version version of the library, which is [missing in Lodash-es](https://github.com/lodash/lodash/issues/3247)
+
+
+```sh
+npm i --save lodash
+```
+
+We then change the import to reflect that:
+
+```js
+// import { flow, orderBy, take, map, partial } from "lodash-es";
+import { flow, orderBy, take, map, partial } from "lodash/fp";
+```
+
+
+
+And we can finally change our transformation to leverage partial application provided out of the box:
+
+```js
+git checkout 9ecd0acd4b40d20ce1de7bfea83b62a60b6868f6
+import { flow, orderBy, take, map, partial } from "lodash/fp";
+
+const result = flow(
+  orderBy(["goals", "shots"], ["desc", "asc"]),
+  take(3),
+  map("player")
+)(players);
+// > > Array(3) [ "Sergio Agüero", "Mohamed Salah", "Sadio Manè" ]
+```
+We run our code, and - again - we have the result we want.
+We then check the size of our bundle and....
+
+```js
+-> du -sh build/js/*.js
+ 84K    build/js/1.chunk.js
+4.0K    build/js/app.js
+```
+
+It's clearly gone back to include the whole library code!
+The reason is the way we import Lodash methods. Unfortunately since we are not using `Lodash-es` anymore Webpack can't tree shake named imports.  
+
+## Step 7: Switching imports
+
+The solution is to change them to be default imports.
+
+```js
+import flow from "lodash/fp/flow";
+import orderBy from "lodash/fp/orderBy";
+import take from "lodash/fp/take";
+import map from "lodash/fp/map";
+
+const result = flow(
+  orderBy(["goals", "shots"], ["desc", "asc"]),
+  take(3),
+  map("player")
+)(players);
+// > > Array(3) [ "Sergio Agüero", "Mohamed Salah", "Sadio Manè" ]
+```
+
+```sh
+-> du -sh build/js/*.js
+ 52K    build/js/1.chunk.js
+4.0K    build/js/app.js
+```
+
+As you can see we have trimmed down our bundle again. Although it's not as small as it was before at 32K, we're really importing only what we need.
+
+## Moving to lodash/fp. Is it worth it?
+
+So, should you move to using pipes rather than chaining and convert your imports to use `lodash/fp`? As everything in programming (or in life!) the answer is only one: it depends. 
+Let's compare our original, chained version:
+
+```js
+const result = chain(players)
+  .orderBy(["goals", "shots"], ["desc", "asc"])
+  .take(3)
+  .map("player")
+  .value();
+```js
+
+To the final one using Lodash/fp:
+
+```js
+const result = flow(
+  orderBy(["goals", "shots"], ["desc", "asc"]),
+  take(3),
+  map("player")
+)(players);
+```
+
+As you can see the difference in syntax is minimal.
+
+As we have seen we can trim down our bundle size by not importing the entirety of Lodash, but if we are to use the `fp` version of Lodash we will perhaps have a slightly bigger bundle size (although smaller than the full package import) and we will lose the very handy feature to use named imports (import { flow, orderBy, take, map, partial } from "lodash-es") while still supporting tree-shaking.
+
+There's one big advantage though where the functional version wins hands down.
+Apart from more subjective stylistic preferences adopting pipes instead of chaining will allow us to intersperse the usage of lodash methods with *our own functions*.
+For example we could extract the first two steps of the pipe and assign them to a const:
+
+```js
+const top3 = p =>
+  flow(
+    orderBy(["goals", "shots"], ["desc", "asc"]),
+    take(3)
+  )(p);
+
+
+const top3names = flow(
+  top3,
+  map("player")
+)(players); // logs 3 players' names
+
+
+const top3totalGoals = flow(
+  top3,
+  sumBy('goals)
+)(players); // 56
+```
+
+This way we can find a meaningful name for and reuse the `top3` function elsewhere. In this case `top3` contains only lodash methods, but of course we're not limited to them. As long as the new function receives data in and returns data out we'll be good to go. 
+
+My personal opinion is that moving to pipes + lodash/fp is worth most of the times and is defintely worth trying if you're a heavy Lodash user.
+
+## Useful links
+
+- [Lodash FP guide](https://github.com/lodash/lodash/wiki/FP-Guide)
+- [3 Lodash functions you should be using in your JavaScript](http://www.scottmessinger.com/2015/05/19/functional-programming-with-lodash/)
+- [Why chaining is a mistake](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba#.dcv5qk552)
+- [Stack Overflow's "how do you chain functions using Lodash](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash/42368281#42368281)
