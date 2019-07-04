@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Upping your Lodash game: going functional from chaining to piping"
+title: "Up your Lodash game by going functional: from chaining to piping"
 ---
 
 [Lodash](https://lodash.com) is pretty much the de-facto standard when we're looking for a utility library for data manipulation in JavaScript. So much that it is the [most depended on package](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491) on npm.
