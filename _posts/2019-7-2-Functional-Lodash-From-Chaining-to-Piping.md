@@ -131,6 +131,7 @@ Although chaining is actually provided by Lodash, if you try this you will see i
 There are various ways to achieve it with Lodash and one of them is to use the combination of `chain` and 'value' methods. Here's an example.
 
 ```js
+// git checkout e8637158f5ecd8475b438b375a027db9a006d59c
 import { chain } from "lodash-es";
 
 const result = chain(players)
@@ -186,7 +187,7 @@ We'll do just that and see the outcome.
 ## Step 3: Fix the broken chain by importing all the things
 As said, let's import the whole Lodash by importing the default export and assigning it to the `_` char. We then extract chain via destructuring, so the rest of the code stays the same.
 ```js
-// git checkout eb0a80fc81e51d325e12042b59f57e33e13c4cab
+// git checkout 2edb1b825f8f8c475755bca0852a48092c426997
 import _ from "lodash-es";
 
 const { chain } = _;
@@ -288,6 +289,7 @@ To do make it happen we need to somehow turn the Lodash methods we are using int
 ## Step 5: Partially there
 
 ```js
+// git checkout 00fd8b573be5c075e3d3cd841bf5fed6d977c28f
 import { flow, orderBy, take, map, partial } from "lodash-es";
 
 const __ = partial.placeholder;
@@ -325,9 +327,7 @@ Here's once again the full version of it:
 
 ```js
 const __ = partial.placeholder;
-// Sort players by goals scored and shots taken.
-// If 2 players have the same number of goals, the one player
-// with less shots on targets is ranked higher.
+
 const result = flow(
   partial(orderBy, __, ["goals", "shots"], ["desc", "asc"]),
   partial(take, __, 3),
@@ -373,7 +373,7 @@ import { flow, orderBy, take, map, partial } from "lodash/fp";
 And we can finally change our transformation to leverage partial application provided out of the box:
 
 ```js
-git checkout 9ecd0acd4b40d20ce1de7bfea83b62a60b6868f6
+// git checkout 9ecd0acd4b40d20ce1de7bfea83b62a60b6868f6
 import { flow, orderBy, take, map, partial } from "lodash/fp";
 
 const result = flow(
@@ -400,6 +400,7 @@ The reason is the way we import Lodash methods. Unfortunately since we are not u
 The solution is to change them to be default imports.
 
 ```js
+// git checkout ac97938fd864f738481149459b39976ff22f17bf
 import flow from "lodash/fp/flow";
 import orderBy from "lodash/fp/orderBy";
 import take from "lodash/fp/take";
