@@ -1,3 +1,8 @@
+---
+layout: post
+title: Upping your Lodash game: from chaining to piping
+---
+
 [Lodash](https://lodash.com) is pretty much the de-facto standard when we're looking for a utility library for data manipulation in JavaScript. So much that it is the [most depended on package](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491) on npm.
 
 Lodash allows developers to write expressive code by covering the most common needs when handling data. 
@@ -137,7 +142,7 @@ const result = chain(players)
 
 Let's run the app in development (`npm run start`) and we will see that everything works as expected.
 
-[lodash-2]
+![_config.yml]({{ site.baseurl }}/images/2019-7-2-lodash-2.png)
 
 Let's see how our prod bundle would look like in this case.
 
@@ -172,7 +177,7 @@ We open http://0.0.0.0:3333/ and we can see we somehow managed to break our app.
 TypeError: (intermediate value)(...).orderBy is not a function
 ```
 
-[lodash-1]
+![_config.yml]({{ site.baseurl }}/images/2019-7-2-lodash-1.png)
 
 The reason here is that Webpack is unaware that Lodash in this case needs other methods than the one we're explicitly importing (ie `chain`). The bundler then happily tree-shakes all the methods that appear to be unused, crucially leaving us with no _.map, no _.orderBy, no _.take on the prod bundle. This will end up throwing a runtime error on production. Not exactly great.
 To fix this we can import the whole lodash and destructure only what we need later on. 
@@ -195,7 +200,7 @@ const result = chain(players)
 
 A quick check at our dev env build will show that everything is still working, so we can rebuild the production bundle and test in the browser. Everything works.
 
-[lodash-3]
+![_config.yml]({{ site.baseurl }}/images/2019-7-2-lodash-3.png)
 
 Let's check the bundles once more.
 
