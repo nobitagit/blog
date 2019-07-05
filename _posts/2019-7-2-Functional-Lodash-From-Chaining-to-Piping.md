@@ -43,7 +43,7 @@ _.take([1,2,3], 2); // [1, 2]
 ```
 In this post we will see both how to use different flavours of Lodash to achieve what we want and what this means for our bundles as well.
 
-Finally, you can find a repo with the below code split into commits if you're interested in trying it yourself [link].
+Finally, [here](https://github.com/nobitagit/functional-lodash-example) you can find a repo with the below code split into commits if you're interested in trying it yourself.
 I will reference the commits for each stage in the comments at the top of each section. For example this will check out the first commit.
 
 ```js
@@ -482,4 +482,4 @@ My personal opinion is that moving to pipes + lodash/fp is worth most of the tim
 - [Lodash FP guide](https://github.com/lodash/lodash/wiki/FP-Guide)
 - [3 Lodash functions you should be using in your JavaScript](http://www.scottmessinger.com/2015/05/19/functional-programming-with-lodash/)
 - [Why chaining is a mistake](https://medium.com/making-internets/why-using-chain-is-a-mistake-9bc1f80d51ba#.dcv5qk552)
-- [Stack Overflow's "how do you chain functions using Lodash](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash/42368281#42368281)
+- [Stack Overflow's "how do you chain functions using Lodash"](https://stackoverflow.com/questions/35590543/how-do-you-chain-functions-using-lodash/42368281#42368281)
