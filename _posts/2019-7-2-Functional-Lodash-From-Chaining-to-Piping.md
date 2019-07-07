@@ -12,9 +12,9 @@ For instance it makes writing and reading operations like these seem very natura
 _.intersection(['a', 'b', 'c'], ['a', 'c', 'e']); // ['a', 'c']
 ```
 
-It's easy to fall in love with the expressiveness and convenience of such a tool. As soon as you get out of the most simple use cases though you will arguably miss a great feature of native array methods such as `Array.map`, `Array.slice` and the likes. This "missing" feature is chaining.
+It's easy to fall in love with the expressiveness and convenience of such a tool. Today we will see how we can make the most of this powerful library by maximising the way we leverage Lodash methods while minimising the amount of code we ship to our users thanks to the capabilities of our bundler (Webpack in this case).
 
-We'll see in example in a minute. A quick note before going any further.
+We'll see how in a minute. A quick note before going any further.
 
 ## Disclaimer: which Lodash?
 As we will see Lodash comes in different distributions.
@@ -50,10 +50,10 @@ I will reference the commits for each stage in the comments at the top of each s
 // -> git checkout 56e092ab1bd01b2492286d5e0f6922b0405b482b
 ```
 
-With the introduction out of the way it's time to see some code!
+With the disclaimers out of the way it's time to see some code!
 
 ## Introduction: our challenge of the day
-In order to demostrate the power of Lodash we will set ourselves a realistic goal.
+In order to demonstrate the power of Lodash we will set ourselves a realistic goal.
 Given a list of players we want to find the names of the top three players by number of goals.
 If two players have the same number of goals, then the one who managed to get to that tally with a lower number of shots will be the winner.
 
@@ -73,7 +73,7 @@ const players = [
 ];
 ```
 
-We will use this data througout the post and reference it as `players` from here on.
+We will use this data throughout the post and reference it as `players` from here on.
 
 ## Step 1: Let's keep it simple by using intermediate variables
 
