@@ -40,7 +40,7 @@ export const statuses = {
 Now we can refactor our code:
 
 ```js
-import { statuses } from '../../statuses.js
+import { statuses } from '../../statuses.js';
 
 //..
 if (request.status === statuses.approved) {
