@@ -2,9 +2,9 @@
 layout: post
 title: "Vs Code one tip a week: code folding"
 ---
+Code folding can make browsing long files easier. When we're trying to focus on the big picture without being distracted by smaller details code folding can be an invaluable aid.
 
 ---
-
 This is an effort to learn how to get the best out of Vs Code keyboard shortcuts without feeling overwhelmed.
 
 Learning how to use our favourite IDE without a mouse can make a big difference.
@@ -14,9 +14,7 @@ The idea is simple: find one tip you like, practice it the whole week until you'
 
 ---
 
-Code folding can make browsing long files easier. When we're trying to focus on the big picture without being distracted by smaller details code folding can be an invaluable aid.
-
-![_config.yml]({{ site.baseurl }}/images/2019-7-26-vscode-tip-code-folding.md.png)
+![_config.yml]({{ site.baseurl }}/images/2019-7-26-vscode-tip-code-folding.png)
 
 To fold a block
 
