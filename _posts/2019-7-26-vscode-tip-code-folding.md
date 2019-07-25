@@ -14,7 +14,7 @@ The idea is simple: find one tip you like, practice it the whole week until you'
 
 ---
 
-![_config.yml]({{ site.baseurl }}/images/2019-7-26-vscode-tip-code-folding.png)
+![_config.yml]({{ site.baseurl }}/images/2019-7-26-vscode-tip-code-folding.gif)
 
 To fold a block
 
