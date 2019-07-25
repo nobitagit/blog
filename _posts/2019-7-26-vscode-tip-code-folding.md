@@ -48,5 +48,5 @@ z + o
 Where "o" stands for "open".
 
 ## Further shortcuts
-Note that you can also fold and unfold an entire file, but I find that less useful, so I will skip this for this post.
+Note that you can also fold and unfold an entire file, but I find that less useful and never really felt the need to memorise that shortcut combination.
 
