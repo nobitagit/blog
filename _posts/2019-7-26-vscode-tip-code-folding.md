@@ -30,7 +30,7 @@ To unfold it:
 
 
 ## Users of Vs Code with Vim extensions
-The above command of course will work for VsCode with vim mode, but of course vim provides folding out of the box.
+The above command will work for all users of VsCode. Those using a vim emulation extension like VsCodeVim or amVim will have an extra pair of shortcuts to choose from.
 
 To fold a block, switch to normal mode and:
 
