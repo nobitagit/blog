@@ -37,6 +37,6 @@ Linux - `Ctrl + K + \`
 
 If you pull up the command palette (`⌘ + SHIFT + P` on a Mac, `Ctrl + SHIFT + P` elsewhere) you will see some other options to split the screen, such as Split Editor Down, Split Editor Left etc.
 
-<img src="https://github.com/nobitagit/blog/blob/gh-pages/images/2019-8-1-vscode-tip-split-panes.png" />
+<img src="https://raw.githubusercontent.com/nobitagit/blog/gh-pages/images/2019-8-1-vscode-tip-split-panes.png" />
 
 These have no associated default keybinding and can be accessed via the palette. If you feel you want to have them available as a shortcut you can use [VsCode key shortcut editor](https://code.visualstudio.com/docs/getstarted/keybindings).
