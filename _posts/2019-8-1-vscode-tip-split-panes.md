@@ -39,4 +39,4 @@ If you pull up the command palette (`⌘ + SHIFT + P` on a Mac, `Ctrl + SHIFT + 
 
 <img src="https://raw.githubusercontent.com/nobitagit/blog/gh-pages/images/2019-8-1-vscode-tip-split-panes.png" />
 
-These have no associated default keybinding and can be accessed via the palette. If you feel you want to have them available as a shortcut you can use [VsCode key shortcut editor](https://code.visualstudio.com/docs/getstarted/keybindings).
+These have no associated default keybinding and can be accessed via the palette. If you feel you want to have them available as a shortcut you can use [VsCode key shortcut editor](https://code.visualstudio.com/docs/getstarted/keybindings) to add your custom key combination.
