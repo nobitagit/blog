@@ -1,8 +1,8 @@
-## Blog
+# Blog
 
 My personal blog.
 
-### Local development
+## Local development
 
 The blog is built using Jekyll, so you'll need Ruby.
 
@@ -31,6 +31,10 @@ You can add `--incremental` to the last command to enable incremental builds.
 
 Some more info can be found on the original readme of this [project](./ORIGINAL_README.md).
 
+## Before posting a new article
+
+Make sure your spelling and grammar are up to standards. Use something like [Language Tool](https://languagetool.org/).
+
 ### Images
 
 Images should be optimised before adding them to the repo.
@@ -42,6 +46,6 @@ imageoptim images/image-name.png
 
 Gifs are automatically handled by `git lfs`.
 
-### Credits
+## Credits
 
 This blog was started from [Jekyll-now](https://github.com/barryclark/jekyll-now).
