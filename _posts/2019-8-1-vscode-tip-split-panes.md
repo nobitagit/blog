@@ -2,7 +2,7 @@
 layout: post
 title: "Vs Code one tip a week: splitting panes"
 ---
-It's quite common when coding to have the need to view multiple files at once on the screen. At times we might even want to view two different parts of the same (long) file. Other times again we just want to make the most of a widescreen monitor.
+It's quite common when coding to have the need to view multiple files at once on the screen. At times, we might even want to view two different parts of the same (long) file. Other times again we just want to make the most of a widescreen monitor.
 
 In those case splitting our editor is the solution, and today we'll see how to do it without the help of a mouse.
 
@@ -39,4 +39,4 @@ If you pull up the command palette (`⌘ + SHIFT + P` on a Mac, `Ctrl + SHIFT + 
 
 <img src="https://raw.githubusercontent.com/nobitagit/blog/gh-pages/images/2019-8-1-vscode-tip-split-panes.png" />
 
-These have no associated default keybinding and can be accessed via the palette. If you feel you want to have them available as a shortcut you can use [VsCode key shortcut editor](https://code.visualstudio.com/docs/getstarted/keybindings) to add your custom key combination.
+These have no associated default key binding and can be accessed via the palette. If you feel you want to have them available as a shortcut, you can use [VsCode key shortcut editor](https://code.visualstudio.com/docs/getstarted/keybindings) to add your custom key combination.
