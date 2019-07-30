@@ -31,6 +31,17 @@ You can add `--incremental` to the last command to enable incremental builds.
 
 Some more info can be found on the original readme of this [project](./ORIGINAL_README.md).
 
+### Images
+
+Images should be optimised before adding them to the repo.
+Make sure you have ImageOptim cli and the ImageOptim.app installed and run:
+
+```
+imageoptim images/image-name.png
+```
+
+Gifs are automatically handled by `git lfs`.
+
 ### Credits
 
 This blog was started from [Jekyll-now](https://github.com/barryclark/jekyll-now).
