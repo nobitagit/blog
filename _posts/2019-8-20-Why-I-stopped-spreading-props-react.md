@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Why I stopped spreading props on React Components"
+---
+
 Spreading props on a React Component is a very common pattern that I picked up very easily and loved from day 1.
 With time though I learnt to understand the implications of using the spread operator in different contexts and came to the conclusion that most of the time spreading props in React is best avoided. Let's see why.
 
