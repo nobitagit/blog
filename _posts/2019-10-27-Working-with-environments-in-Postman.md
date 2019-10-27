@@ -1,7 +1,10 @@
-# Working with environments in Postman
+---
+layout: post
+title: "Working with environments in Postman"
+---
 
 Postman is one my favourite tools at work to test APIs.
-Even at a simple level Postman easily becomes invaluable. At the same time, devoting a little effort in learning some of its best features can quicly boost our productivity and development speed.
+Even at a simple level Postman easily becomes invaluable. At the same time, devoting a little effort in learning some of its best features can quickly boost our productivity and development speed.
 
 One of my favourite aspects of working with Postman is its *environments* feature.
 
