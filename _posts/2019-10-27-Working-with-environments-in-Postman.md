@@ -23,6 +23,7 @@ While this works, it becomes tedious quickly as we will need to paste the token 
 Let's see how we can avoid this manual setup thanks to Postman.
 
 ## Learn how to work with environments
+
 As you will see, environments are a very powerful feature to stay organised in Postman and to make our workflow much faster and portable.
 If you want to follow along and try all the steps below you can clone [this repo](https://github.com/nobitagit/postman-tester), follow the instructions in the readme to install and test every command against this test api.
 
