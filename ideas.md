@@ -1,0 +1,3 @@
+# Ideas
+
+- "HTTP security headers"
