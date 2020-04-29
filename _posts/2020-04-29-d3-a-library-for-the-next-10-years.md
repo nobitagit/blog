@@ -1,6 +1,6 @@
 ---
 layout: post
-title: D3: a JS library for the next 10 years?
+title: D3, a JS library for the next 10 years?
 ---
 
 D3 has been the go-to library for in browser data visualisation for many years by now.
