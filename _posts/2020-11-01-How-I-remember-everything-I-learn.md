@@ -23,7 +23,7 @@ There's no right or wrong of course, but if you asked me, my answer would be so
 
 > I would be able to remember **everything** I learn
 
-I don't know about you, but **knowledge retention** is easily one the big challenges of my life. I read blogs every day, I watch countless of videos, I start (and sometimes finish) a few technical books per year and remembering everything I learnt is outright **unrealistic**.
+I don't know about you, but **knowledge retention** is easily one the big challenges of my life. I read blogs every day, I watch countless videos, I start (and sometimes finish) a few technical books per year and remembering everything I learnt is outright **unrealistic**.
 There's just so much one can retain of what they read or hear.
 
 ## What I tried
@@ -50,7 +50,7 @@ I felt I was somehow looking for an **impossible balance**. I wanted a solution 
 - ...but still loose enough so it didn't kill my creativity and the free flow of thoughts that happens when learning something new
 - searchable
 - low friction, as in, easy to type in, giving me a pleasant, natural experience
-- non existent learning curve (no "new revolutionary tools"). Sorry, I'm busy leaning something else
+- non-existent learning curve (no "new revolutionary tools"). Sorry, I'm busy leaning something else
 - easily retrievable, available anywhere
 - recoverable if a disaster happens (think about forgetting your notebook on a train, or having it chewed by your dog)
 - trackable, I wanted to be able to see my progress through the months, and possibly get some stats, if not for vanity
@@ -72,8 +72,8 @@ And there it was. The sign that the "impossible balance" **was actually possible
 
 From that moment, around 2 years ago, I also created [my own personal wiki](https://github.com/nobitagit/knowledge) and it's been my go-to tool for remembering everything I learn.
 
-It's nothing more than a repo on Github, divided in folders with a bunch of readmes in each of them.
-Folders are the main categories, such as databases, Kubernetes, JavaScript, security, regex etc. Each readme inside of them subdivide the folder into specific topics. Security would have readmes for JWT, Frontend, Cryptography etc.
+It's nothing more than a repo on Github, divided in folders with a bunch of READMEs in each of them.
+Folders are the main categories, such as databases, Kubernetes, JavaScript, security, regex etc. Each README inside them subdivide the folder into specific topics. Security would have READMEs for JWT, Frontend, Cryptography etc.
 
 ## Evolution
 
