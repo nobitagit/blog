@@ -3,14 +3,18 @@ layout: post
 title: Should my small team really, really, really do code reviews?
 ---
 
-While nearly everyone on paper agrees that code reviews are "a good thing" <sup>tm</sup> and everyone should do them, the reality often tells a different story. Big teams and companies all pretty much have a code review process in place. On the other hand, small startups often skip this step, especially at the early stages of their life.
+While nearly everyone on paper agrees that code reviews are "a good thing" and everyone should do them, the reality often tells a different story. Big teams and companies all pretty much have a code review process in place. On the other hand, small startups often skip this step, especially at the early stages of their life.
 
-If you're short of time feel free to skip at the last section and get a quick list of to-dos.
+---
+
+**Note**: If you're short of time feel free to skip at the last section and get a quick list of to-dos.
 (And by the way, the answer to the question in the title is **yes**)
 
-## Why you shouldn't do code reviews
+---
 
-Or rather, why people justify their team skipping reviews.
+## When you shouldn't do code reviews
+
+Or rather, how people justify their team skipping reviews.
 
 - Code reviews slow us down
 - We're all senior developers, we trust each other
@@ -22,18 +26,21 @@ If you recognise yourself in one or more of the above statements, I hope this po
 ## Let's talk about code quality
 
 Code reviews are one of the best way to favour accountability and "good quality code", and - if done right - are better than any linting tool, code style guide or automated process.
+Having someone proof read what we type helps us keeping our standard higher. Even a seasoned developer can slip sloppy code in when tired, be it consciously or by mistake.
 But code quality comes at a cost, and the money used to pay for it is one of the most valuable currencies for a startup: **time**.
-It is commonly accepted that doing things right is slower than doing them worse.
 
+It is commonly accepted that doing things right is slower than doing them worse.
 Martin Fowler talks about this in his article ["Is High Quality Software Worth the Cost?"](https://martinfowler.com/articles/is-quality-worth-cost.html). He mentions something interesting for us:
 
 > Developers find poor quality code significantly slows them down **within a few weeks** [_emphasis mine_]. So there's not much runway where the trade-off between internal quality and cost applies.
 
-[image]
+![Code quality increases velocity](https://dev-to-uploads.s3.amazonaws.com/i/u7kv3anjgcyvctoxjzhk.png)
 
-_this chart is taken from Fowler's article ["Is High Quality Software Worth the Cost?"](https://martinfowler.com/articles/is-quality-worth-cost.html)_
+_this chart is taken from Fowler's [article](https://martinfowler.com/articles/is-quality-worth-cost.html)_
 
 If we agree on Mr Fowler's take we can see that "good code" pays off very quickly, even at very early stages.
+Higher quality means higher velocity, and this is true earlier than many seem to realise.
+
 While the first lines of a new codebase are often seen as something temporary ("it's only a prototype after all"), the reality is that those lines will influence the speed of development very early on. In a few weeks this advantage will very likely be noticeable.
 
 ## What to review
@@ -47,12 +54,12 @@ Sounds harsh? Maybe. But it's very hard to draw a line of what exactly is a mean
 
 **If it's a quick change, it will also be very quick to review**.
 
-## But but... this slows me down!
+## But, but... this slows me down!
 
 I hear you. Yes. You're pushing a one-liner and I'm telling you that you need to wait 2 hours, or even a day for someone else to review it.
 I agree, this is **unacceptable**. And that's why having **prompt reviews** should be a top concern of your team processes.
 
-We're in a small startup and speed is everything. Well, it turns out speed is everything at massive scales such as Google, too.
+We're in a small startup and speed is everything. Well, it turns out speed is everything at massive scales, too.
 
 > At Google, we optimize for the speed at which a team of developers can produce a product together, as opposed to optimizing for the speed at which an individual developer can write code
 >
