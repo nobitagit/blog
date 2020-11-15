@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The \#1 ingredient of a successful team
+title: The number 1 ingredient of a successful team
 ---
 
 Have you ever wondered what makes a team a great one?
