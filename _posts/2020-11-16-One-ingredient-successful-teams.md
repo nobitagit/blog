@@ -74,16 +74,16 @@ Psychological safety is a deliberate investment. It doesn't _happen_ by itself o
 
 It's the result of a proactive, continuous effort of the management and the team members to instil this value on a daily basis in the fibre of a team. Managers need to create an environment where making mistakes is accepted and talking about them is encouraged so much that it's the norm.
 
-A side effect of mistakes being surfaced frequently is that either new processes are created or existing ones are perfected. This is constant **rework of the status quo** is what sets great teams apart.
+A side effect of mistakes being surfaced frequently is that either new processes are created or existing ones are perfected. This constant **rework of the status quo** is what sets great teams apart.
 
 ## Who should invest in Psychological Safety?
 
 In one word: **everyone**. And by everyone I mean:
 
-- **Companies** will build a place where people want to be in and attract talent
-- **Managers** will build a high performance teams that deliver and are capable of overachieving
-- **Employees** will improve their career and quite possible discover new routes that would otherwise remain unknown to them
-- **People looking for a new job** will want to understand their future team dynamics so they can find a place that match their ambitions, allow them to onboard faster and contribute quickly and effectively
+- **Companies** as they will create a place where skilled and ambitious people want to be in and hence attract talent
+- **Managers** as they will build **high performance teams** that deliver and are capable of overachieving
+- **Employees** as they will improve their career and discover new professional paths that would otherwise remain unknown to them
+- **People looking for a new job** as they will want to understand their future team dynamics so they can find a place that match their ambitions, allow them to onboard faster and contribute quickly and effectively
 
 ## Looking back: an interesting game
 
