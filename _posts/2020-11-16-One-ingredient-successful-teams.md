@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The #1 ingredient of a successful team
+title: The \#1 ingredient of a successful team
 ---
 
 Have you ever wondered what makes a team a great one?
@@ -8,7 +8,7 @@ I never did, until I had to create one.
 
 ## The recipe of a great team
 
-My first instinct, and I guess it would be the same for the majority of us, would be to hire just enough people and strive for a balance of various traits distributed across the members:
+My first instinct would have been to hire just enough people and strive for a balance of various traits distributed across the members:
 
 - good communication
 - highly skilled
