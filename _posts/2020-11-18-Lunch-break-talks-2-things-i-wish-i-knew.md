@@ -13,7 +13,7 @@ There are at least 3 reasons why a talk from [Simon Sinek](https://en.wikipedia.
 
 See for yourself.
 
-{% youtube p9gzGmyDJvc %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p9gzGmyDJvc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## "See the bagel"
 
