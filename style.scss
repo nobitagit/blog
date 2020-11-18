@@ -269,8 +269,9 @@ nav {
 //
 
 .posts > .post {
-  padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #d8d8d8;
+  border-style: dotted;
 }
 
 .posts > .post:last-child {
